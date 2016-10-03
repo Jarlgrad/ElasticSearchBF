@@ -1,0 +1,102 @@
+input {  
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[Customers]"
+      type => "customer"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[EmployeeTerritories]"
+      type => "employeeterritory"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[OrderDetails]"
+      type => "orderdetail"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[Orders]"
+      type => "order"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[Products]"
+      type => "product"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[Region]"
+      type => "region"
+   }
+ 	jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[People]"
+      type => "people"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[Shippers]"
+      type => "shipper"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[Suppliers]"
+      type => "supplier"
+   }
+          jdbc {
+                         jdbc_driver_library => "C:\Users\Administrator\Dev\jdbc\sqljdbc_6.0\enu\sqljdbc4.jar"
+                         jdbc_driver_class => "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                         jdbc_connection_string => "jdbc:sqlserver://elasticsearchdb.database.windows.net:1433;database=ElasticSearchDB;user=DBAdmin;password=this!s4password;"
+                         jdbc_user => "DBAdmin"
+                         jdbc_password => "this!s4password"
+                         statement => "SELECT * FROM [dbo].[Territories]"
+      type => "territory"
+   }
+}
+
+output {
+        stdout{
+        }
+        elasticsearch {
+        hosts => [ "localhost:9200" ]
+    codec => "json"
+    index => [multidb]
+    }
+}	

@@ -1,0 +1,30 @@
+
+<h1>Elasticsearch | DEMO</h1>
+
+<!--<h3>Senaste sökningar</h3>-->
+
+<div class="grid grid-pad">
+  <ul>
+    <div *ngFor="let result of queryResults"
+    (click)="showPreviousQueryResult(result)" class ="col-1-4">
+      <div class="queryResult">
+        <li>
+          <span>{{result.title}}</span>
+        </li>
+      </div>
+
+    </div>
+  </ul>
+</div>
+
+<!--  <nav>
+    <a routerLink="/resultoverview">Query result</a>
+    <a routerLink="/kibana">Kibana</a>
+
+
+  </nav>-->
+  <div>
+    <my-search-input></my-search-input>
+  </div>
+  <!--<button (click)="addQueryResult(newQueryResult.)">-->
+<router-outlet></router-outlet>

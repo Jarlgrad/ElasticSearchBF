@@ -1,0 +1,79 @@
+<div *ngIf="queryResult">
+  <h2>Information</h2>
+<!-- <editor-fold>Div för people-->
+  <div *ngIf="queryResult._type === 'people'">
+
+  <p>  ID:{{queryResult._source.id}}</p>
+    <p> Firstname: {{queryResult._source.firstname}}</p>
+    <p> Lastname: {{queryResult._source.lastname}}</p>
+    <p> IP-address: {{queryResult._source.gender}}</p>
+    <p> Email: {{queryResult._source.email}}</p>
+    <p> Date: {{queryResult._source.city}}</p>
+    <p> GUID: {{queryResult._source.date}}</p>
+    </div>
+<!-- </editor-fold>-->
+
+<!-- <editor-fold>Div för customer-->
+    <div *ngIf="queryResult._type === 'customer'">
+      <p>  ID:{{queryResult._source.customerid}}</p>
+        <p> Company name: {{queryResult._source.companyname}}</p>
+        <p> Contact name: {{queryResult._source.contactname}}</p>
+        <p> Contact title: {{queryResult._source.contacttitle}}</p>
+        <p> Address: {{queryResult._source.address}}</p>
+        <p> City: {{queryResult._source.city}}</p>
+        <p> Region: {{queryResult._source.region}}</p>
+        <p> Postalcode: {{queryResult._source.postalcode}}</p>
+        <p> Country: {{queryResult._source.country}}</p>
+        <p> Phone: {{queryResult._source.phone}}</p>
+        <p> Fax: {{queryResult._source.fax}}</p>
+    </div>
+    <!-- </editor-fold>-->
+
+<!-- <editor-fold>Div för product-->
+    <div *ngIf="queryResult._type === 'product'">
+<p> Product Id: {{queryResult._source.productid}} </p>
+ <p> Product Name: {{queryResult._source.productname}} </p>
+ <p> Supplier Id: {{queryResult._source.supplierid}} </p>
+ <p> Category Id: {{queryResult._source.categoryid}} </p>
+ <p> Quantity per Unit: {{queryResult._source.quantityperunit}} </p>
+ <p> Unit Price: {{queryResult._source.unitprice}} </p>
+ <p> Units in Stock: {{queryResult._source.unitsinstock}} </p>
+ <p> Reorder Level: {{queryResult._source.reorderlevel}} </p>
+ <p> Discontinued: {{queryResult._source.discontinued}} </p>
+ </div>
+ <!-- </editor-fold>-->
+
+<!-- <editor-fold>Div för supplier-->
+     <div *ngIf="queryResult._type === 'supplier'">
+       <p>  ID:{{queryResult._source.supplierid}}</p>
+         <p> Company name: {{queryResult._source.companyname}}</p>
+         <p> Contact name: {{queryResult._source.contactname}}</p>
+         <p> Contact title: {{queryResult._source.contacttitle}}</p>
+         <p> Address: {{queryResult._source.address}}</p>
+         <p> City: {{queryResult._source.city}}</p>
+         <p> Region: {{queryResult._source.region}}</p>
+         <p> Postalcode: {{queryResult._source.postalcode}}</p>
+         <p> Country: {{queryResult._source.country}}</p>
+         <p> Phone: {{queryResult._source.phone}}</p>
+         <p> Fax: {{queryResult._source.fax}}</p>
+     </div>
+     <!-- </editor-fold>-->
+
+ <!-- <editor-fold>Div för order-->
+          <div *ngIf="queryResult._type === 'order'">
+            <p>  Order ID:{{queryResult._source.orderid}}</p>
+              <p> Customer ID: {{queryResult._source.customerid}}</p>
+              <p> Order date: {{queryResult._source.orderdate}}</p>
+              <p> Required date: {{queryResult._source.requireddate}}</p>
+              <p> Shipped date: {{queryResult._source.shippeddate}}</p>
+              <p> Ship name: {{queryResult._source.shipname}}</p>
+              <p> Ship address: {{queryResult._source.shipaddress}}</p>
+              <p> Ship city: {{queryResult._source.shipcity}}</p>
+              <p> Ship postalcode: {{queryResult._source.shippostalcode}}</p>
+              <p> Ship region: {{queryResult._source.shipregion}}</p>
+              <p> Ship country: {{queryResult._source.shipcountry}}</p>
+          </div>
+          <!-- </editor-fold>-->
+  <!-- <input [(ngModel)]="queryResult.title" placeholder="Ändra titel">
+    <button (click)="save()">Spara.Go()</button> -->
+</div>

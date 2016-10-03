@@ -1,0 +1,20 @@
+<h1>Previous Query</h1>
+
+
+  <div *ngFor="let result of queryResults"
+
+    (click)="onSelect(result)">
+    <div *ngIf="result.id === queryid">
+      <ul class="queryResult" [class.selected]="result === selectedResult">
+        <li >
+          <span > {{result.id}} {{result.title}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+  <my-query-result class="queryDetails"
+  [queryResult]="selectedResult"></my-query-result>

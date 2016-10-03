@@ -1,0 +1,58 @@
+<div id="search-component">
+
+  <!-- <h2> Vad vill du hitta? </h2> -->
+
+<div id="searchDiv">
+  <input [(ngModel)]="searchTerm"
+         #searchBox id="search-box"
+         (keyup)="onTyping(searchBox.value)"
+         placeholder="Vad vill du hitta?">
+  <button id="search-button" (click)="search(searchBox.value)">Sök</button>
+</div>
+<h1 id="smallh1">Query results</h1>
+<my-query-result class="queryDetails"
+[queryResult]="selectedResult" *ngIf="selectedResult" ></my-query-result>
+<table class="table table-hover">
+<thead *ngIf="searchBox.value.length>0">
+<tr class="header">
+ <th><a href="" title="Sortera efter typ">Type</a></th>
+    <th><a href="" title="Sortera efter namn">Name</a></th>
+    <th><a href="" title="Sortera efter datum">Date</a></th>
+      <th><a href="" title="Sortera efter score">Relevance</a></th>
+</tr>
+</thead>
+<tbody *ngIf="searchBox.value.length>0">
+<tr *ngFor="let result of hits"
+(click)="onSelect(result)" >
+  <td title="typeColumn" class="queryResult">{{result._type}}</td>
+  <td>
+  <!--  {{result._source | json}}-->
+  {{result._source.productname}}
+  {{result._source.firstname}}
+  {{result._source.companyname}}
+  {{result._source.shipname}}
+  </td>
+  <td>{{result._source.city}}</td>
+  <td>{{result._score}}</td>
+</tr>
+</tbody>
+</table>
+
+
+
+  <!--   <div *ngFor="let result of hits">
+  <ul>
+<li>
+    <p>{{result._source | json}}{{result._type}}</p>
+</li>
+</ul>
+</div>
+<ul>
+ <li *ngFor="let result of searchQueryResults | async"
+    (click)="onSelect(result.title)" class="search-result">
+      <span> {{result.title}} </span>
+    </li>
+  </ul>-->
+</div>
+
+<!-- (keyup)="onSelect(searchBox.value)" -->
