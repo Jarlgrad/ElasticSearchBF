@@ -25,6 +25,13 @@ namespace test_api.Controllers
             return _elasticSearchManager.Search(input, field);
         }
 
+        [HttpGet]
+        public string GetFromFieldAndType(string input, string field = "_all",string type="_all")
+        {
+            //return _elasticSearchManager.GetAllIndices();
+            return _elasticSearchManager.SearchAfterFieldAndType(input, field,type);
+        }
+
         // GET api/values/5 
         [HttpGet("{id}")]
         public string Get(int id)

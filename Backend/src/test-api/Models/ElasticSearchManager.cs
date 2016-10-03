@@ -26,6 +26,7 @@ namespace test_api.Models
             })
             .PrettyJson();
 
+       
 
         public static ElasticClient client = new ElasticClient(settings);
         #endregion
@@ -53,6 +54,27 @@ namespace test_api.Models
             return response;
         }
 
+        //Tar in field och type från dropdown menyvalen i frontend(förhoppningsvis).
+        internal string SearchAfterFieldAndType(string query, string field, string type)
+        {
+            Field searchField = new Field(field);
+
+            var result =
+            client.Search<dynamic>(r => r
+            .Size(100)
+            .AllTypes()
+            .Query(q => q
+            .QueryString(qs => qs
+            .Query($"*{query}*")
+            .Fields(searchField)
+            .Rewrite(RewriteMultiTerm.ScoringBoolean)
+            )
+            )
+            );
+
+            var response = client.Serializer.SerializeToString(result);
+            return response;
+        }
         public string GetAllIndices()
         {
             var result = client.Search<dynamic>(s => s
