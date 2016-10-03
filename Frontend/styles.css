@@ -1,0 +1,178 @@
+/* Master Styles */
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+@import 'https://fonts.googleapis.com/css?family=Alfa+Slab+One';
+
+h1 {
+    font-family: 'Alfa Slab One';
+    font-weight: normal;
+    background-color: #93c2d8;
+    padding: 10px 40px 10px 40px;
+    /*border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;*/
+    border-radius: 40px;
+    text-align: center;
+}
+
+h2{
+  margin: 5px;
+}
+
+a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+}
+
+input {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    padding: 2%;
+    margin: auto;
+    font-family: 'Roboto';
+    background-color: rgba(249, 250, 255, 0.53);
+    width: 80%;
+}
+
+p{
+  border-bottom: beige;
+border-bottom-style: dotted;
+border-bottom-width: 1px;
+border-color: #dcdcdc;
+margin: 0px;
+padding: 5px;
+text-transform: capitalize;
+}
+
+table {
+    width:1000px;
+    line-height: 1.5;
+}
+
+th{
+padding: 7px;
+}
+
+td{
+  border-bottom-color: #dcdcdc;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    line-height: 2;
+}
+
+#smallh1{
+  font-size: 20px;
+  font-weight: 100;
+  text-transform: uppercase;
+   background-color: #eaebcc;
+
+}
+
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+}
+
+.queryDetails {
+    float: right;
+    line-height: 1.5;
+    width: 30%;
+    border-width: 1px;
+    border-style: dotted;
+    border-color: #383838;
+    border-radius: 40px;
+    padding: 20px;
+}
+
+.queryResult {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+}
+
+.queryResult li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+}
+
+.queryResult td.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+}
+
+.queryResult td:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+}
+
+.queryResult .text {
+    position: relative;
+    top: -3px;
+}
+
+.queryResult .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color: #607D8B;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+}
+
+thead {
+    position: relative;
+    background-color: #ff6060;
+    text-align: left;
+}
+
+
+
+/*th, td {
+    border: 1px solid black;
+}*/
+
+#search-button {
+    font-family: 'Roboto';
+    font-size: 1.2em;
+    width: 20%;
+    border-style: groove;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: -6px;
+}
+
+#search-box {
+    font-size: 1.2em;
+    width: 80%;
+    /*border-radius:10px;*/
+    border-style: groove;
+    border-width: 2px;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#searchDiv{
+  width: 33%;
+  margin: auto;
+  padding: 20px;
+}
