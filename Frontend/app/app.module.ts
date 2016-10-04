@@ -26,8 +26,7 @@ import { SearchInputComponent } from './search-input.component';
                   ResultOverviewComponent,
                   SearchInputComponent,
                   PreviousQueryComponent ],
-  bootstrap:    [ AppComponent,
-                  SearchInputComponent ],
+  bootstrap:    [ AppComponent],
   providers:    [ QueryResultService,
                   SearchService]
 

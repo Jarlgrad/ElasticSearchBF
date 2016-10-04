@@ -8,20 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var SearchPipe = (function () {
     function SearchPipe() {
     }
     SearchPipe.prototype.transform = function (value) {
         return value;
     };
-    SearchPipe = __decorate([
-        core_1.Pipe({
-            name: "search"
-        }), 
-        __metadata('design:paramtypes', [])
-    ], SearchPipe);
     return SearchPipe;
 }());
+SearchPipe = __decorate([
+    core_1.Pipe({
+        name: "search"
+    }),
+    __metadata("design:paramtypes", [])
+], SearchPipe);
 exports.SearchPipe = SearchPipe;
 //# sourceMappingURL=search-pipe.js.map

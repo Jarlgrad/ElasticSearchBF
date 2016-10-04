@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
 var QueryResultService = (function () {
     function QueryResultService(http) {
         this.http = http;
@@ -45,11 +45,11 @@ var QueryResultService = (function () {
             .then(function () { return input; })
             .catch(this.handleError);
     };
-    QueryResultService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], QueryResultService);
     return QueryResultService;
 }());
+QueryResultService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], QueryResultService);
 exports.QueryResultService = QueryResultService;
 //# sourceMappingURL=query-result.service.js.map

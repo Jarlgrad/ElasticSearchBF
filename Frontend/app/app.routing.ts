@@ -5,6 +5,7 @@ import { KibanaComponent } from './kibana.component';
 import { AppComponent } from './app.component';
 import { ResultOverviewComponent } from './result-overview.component';
 import { PreviousQueryComponent } from './previous-query.component';
+import { SearchInputComponent } from './search-input.component';
 
 const appRoutes: Routes = [
   {
@@ -24,8 +25,12 @@ const appRoutes: Routes = [
     component:ResultOverviewComponent
   },
   {
+    path:'search',
+    component:SearchInputComponent
+  },
+  {
       path:'',
-      redirectTo:'/resultoverview',
+      redirectTo:'/search',
       pathMatch:'full'
   }
 ];

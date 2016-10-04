@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
@@ -10,56 +10,52 @@ import {ResultOverviewComponent} from './result-overview.component'
 @Component({
   selector: 'my-search-input',
   templateUrl: 'app/search-input.component.html',
+    providers:[ResultOverviewComponent]
 })
+
+@Injectable()
 export class SearchInputComponent implements OnInit {
 
   private searchInput = new Subject<string>();
   searchQueryResults: Observable<QueryResult[]>;
   searchTerm :string ;
-  resultOverview:ResultOverviewComponent;
   private  hits = new Array<QueryResult>();
   private  allData:Object;
   selectedResult:QueryResult;
 constructor(
   private searchService:SearchService,
-  private router: Router ) {}
+  private router: Router,
+ private resultOverview:ResultOverviewComponent ) {}
 
 ngOnInit():void{
- this.searchQueryResults = this.searchInput
-    .debounceTime(100)        // wait for 300ms pause in events
-    .distinctUntilChanged()   // ignore if next search term is same as previous
-    .switchMap(term => term   // switch to new observable each time
-    ? this.searchService.search(term) // return the http search observable
-    : Observable.of<QueryResult[]>([])) // or the observable of empty heroes if no search term
-    .catch(error => {
-      console.log(error);
-      return Observable.of<QueryResult[]>([]);
-    });
+
   }
 
   onTyping(term:string):void{
-    if (term.length>0) {
+    if (term.length>2) {
       this.searchInput.next(term);
       this.searchTerm = term;
-      this.search(this.searchTerm);
+      this.resultOverview.search(this.searchTerm);
     }
   }
-
-  search(input:string): void{
+/**
+search(input:string): void{
  this.searchService.search(input)
  .subscribe(
- data => this.setResult(data,data.hits.hits),
+ data => this.resultOverview.setResult(data,data.hits.hits),
  error => alert(error));
-  }
-  onSelect(queryResult:QueryResult):void{
+  }*/
+/**
+onSelect(queryResult:QueryResult):void{
   this.selectedResult = queryResult;
 }
-setResult(data:Object, array:Array<QueryResult>): void {
+setResult(data:Object, arrayOfQueryResult:Array<QueryResult>): void {
   this.allData = data;
-  array.forEach((item, index) => {
+  arrayOfQueryResult.forEach((item, index) => {
     this.hits[index] = item;
     JSON.stringify(this.hits[index]._source);
 
   });
 }
+*/
 }

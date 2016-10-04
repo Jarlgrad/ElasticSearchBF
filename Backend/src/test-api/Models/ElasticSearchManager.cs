@@ -26,13 +26,14 @@ namespace test_api.Models
             })
             .PrettyJson();
 
-       
+
 
         public static ElasticClient client = new ElasticClient(settings);
         #endregion
 
         #region Fungerande metoder
 
+        //Används ej längre. 2 inparametrar, bra att behålla för ev. test.
         internal string Search(string query, string field)
         {
             Field searchField = new Field(field);
@@ -54,7 +55,45 @@ namespace test_api.Models
             return response;
         }
 
-       
+        internal string Search(string query, string field, string type)
+        {
+            Field searchField = new Field(field);
+            ISearchResponse<dynamic> result;
+            if (type == "")
+            {
+                result = client.Search<dynamic>(r => r
+                .Size(1)
+                .AllTypes()
+                .Query(q => q
+                .QueryString(qs => qs
+                .Query($"*{query}*")
+                .Fields(searchField)
+                .Rewrite(RewriteMultiTerm.ScoringBoolean)
+                )
+                )
+                );
+            }
+            else
+            {
+                Types types = Types.Parse(type);
+                result = client.Search<dynamic>(r => r
+                .Size(1)
+                .Type(types)
+                .Query(q => q
+                .QueryString(qs => qs
+                .Query($"*{query}*")
+                .Fields(searchField)
+                .Rewrite(RewriteMultiTerm.ScoringBoolean)
+                )
+                )
+                );
+            }
+
+
+            var response = client.Serializer.SerializeToString(result);
+            return response;
+        }
+
         public string GetAllIndices()
         {
             var result = client.Search<dynamic>(s => s

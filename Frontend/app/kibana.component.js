@@ -8,18 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var KibanaComponent = (function () {
     function KibanaComponent() {
     }
-    KibanaComponent = __decorate([
-        core_1.Component({
-            selector: 'my-kibana',
-            template: "\n  <h1> Hello from Kibana Component! </h1>\n  ",
-        }), 
-        __metadata('design:paramtypes', [])
-    ], KibanaComponent);
     return KibanaComponent;
 }());
+KibanaComponent = __decorate([
+    core_1.Component({
+        selector: 'my-kibana',
+        template: "\n  <h1> Hello from Kibana Component! </h1>\n  ",
+    }),
+    __metadata("design:paramtypes", [])
+], KibanaComponent);
 exports.KibanaComponent = KibanaComponent;
 //# sourceMappingURL=kibana.component.js.map

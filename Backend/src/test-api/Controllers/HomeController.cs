@@ -19,13 +19,12 @@ namespace test_api.Controllers
 
         // GET api/values
         [HttpGet]
-        public string Get(string input, string field = "_all")
+        public string Get(string input, string field = "_all", string type = "")
         {
             //return _elasticSearchManager.GetAllIndices();
-            return _elasticSearchManager.Search(input, field);
+            return _elasticSearchManager.Search(input, field, type);
         }
 
-    
         // GET api/values/5 
         [HttpGet("{id}")]
         public string Get(int id)

@@ -1,13 +1,32 @@
-<!--<h1>Query results</h1>
- <ul class="queryResult">
-    <li *ngFor="let result of queryResults"
-    [class.selected]="result === selectedResult"
-    (click)="onSelect(result)" class="search-result">
-      <span> {{result}} {{result.type}} </span>
-    </li>
-  </ul>
-  <button (click)="getQueryResults()">Visa resultaten</button>
-<p>{{testResultat}}</p>
+<div>
 
-  <my-query-result class="queryDetails"
-  [queryResult]="selectedResult"></my-query-result>-->
+<h1 id="smallh1">Query results.</h1>
+<my-query-result class="queryDetails"
+[queryResult]="selectedResult" *ngIf="selectedResult" ></my-query-result>
+<table  class="table table-hover">
+<thead>
+<tr class="header">
+ <th><a href="" title="Sortera efter typ">Type</a></th>
+    <th><a href="" title="Sortera efter namn">Name</a></th>
+    <th><a href="" title="Sortera efter datum">Date</a></th>
+      <th><a href="" title="Sortera efter score">Relevance</a></th>
+</tr>
+</thead>
+
+<tbody>
+<tr *ngFor="let result of hits"
+(click)="onSelect(result)" >
+  <td title="typeColumn" class="queryResult">{{result._type}}</td>
+  <td>
+  <!--  {{result._source | json}}-->
+  {{result._source.productname}}
+  {{result._source.firstname}}
+  {{result._source.companyname}}
+  {{result._source.shipname}}
+  </td>
+  <td>{{result._source.city}}</td>
+  <td>{{result._score}}</td>
+</tr>
+</tbody>
+</table>
+</div>
