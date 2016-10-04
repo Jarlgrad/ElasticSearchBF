@@ -9,19 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var SearchPipe = (function () {
-    function SearchPipe() {
+var DropdownComponent = (function () {
+    function DropdownComponent() {
     }
-    SearchPipe.prototype.transform = function (value) {
-        return value;
-    };
-    SearchPipe = __decorate([
-        core_1.Pipe({
-            name: "search"
+    DropdownComponent = __decorate([
+        core_1.Component({
+            selector: 'my-dropdown',
+            /**  pipes: [SearchPipe], */
+            template: "<div class=\"dropdown\">\n    <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Dropdown Example\n    <span class=\"caret\"></span></button>\n    <ul class=\"dropdown-menu\">\n      <li><a href=\"#\">HTML</a></li>\n      <li><a href=\"#\">CSS</a></li>\n      <li><a href=\"#\">JavaScript</a></li>\n    </ul>\n  </div>\n"
         }), 
         __metadata('design:paramtypes', [])
-    ], SearchPipe);
-    return SearchPipe;
+    ], DropdownComponent);
+    return DropdownComponent;
 }());
-exports.SearchPipe = SearchPipe;
-//# sourceMappingURL=search-pipe.js.map
+exports.DropdownComponent = DropdownComponent;
+//# sourceMappingURL=dropdown.component.js.map

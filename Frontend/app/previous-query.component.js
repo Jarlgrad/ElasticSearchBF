@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var query_result_service_1 = require("./query-result.service");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var query_result_service_1 = require('./query-result.service');
 var PreviousQueryComponent = (function () {
     function PreviousQueryComponent(queryResultService, route) {
         this.queryResultService = queryResultService;
@@ -35,15 +35,14 @@ var PreviousQueryComponent = (function () {
         this.queryResultService.getQueryResults()
             .map(function (queryResults) { return _this.queryResults = queryResults; });
     };
+    PreviousQueryComponent = __decorate([
+        core_1.Component({
+            selector: 'my-previous-query',
+            templateUrl: 'app/previous-query.component.html'
+        }), 
+        __metadata('design:paramtypes', [query_result_service_1.QueryResultService, router_1.ActivatedRoute])
+    ], PreviousQueryComponent);
     return PreviousQueryComponent;
 }());
-PreviousQueryComponent = __decorate([
-    core_1.Component({
-        selector: 'my-previous-query',
-        templateUrl: 'app/previous-query.component.html'
-    }),
-    __metadata("design:paramtypes", [query_result_service_1.QueryResultService,
-        router_1.ActivatedRoute])
-], PreviousQueryComponent);
 exports.PreviousQueryComponent = PreviousQueryComponent;
 //# sourceMappingURL=previous-query.component.js.map

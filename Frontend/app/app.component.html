@@ -1,14 +1,7 @@
 
 <h1>Elasticsearch | DEMO</h1>
 
-<router-outlet></router-outlet>
-  <div>
-    <my-result-overview></my-result-overview>
-  </div>
-
-
-
-<!--<h3>Senaste sökningar</h3>
+<!--<h3>Senaste sökningar</h3>-->
 
 <div class="grid grid-pad">
   <ul>
@@ -24,10 +17,14 @@
   </ul>
 </div>
 
- <nav>
+<!--  <nav>
     <a routerLink="/resultoverview">Query result</a>
     <a routerLink="/kibana">Kibana</a>
 
-  </nav>
-  <button (click)="addQueryResult(newQueryResult.)">
-  -->
+
+  </nav>-->
+  <div>
+    <my-search-input></my-search-input>
+  </div>
+  <!--<button (click)="addQueryResult(newQueryResult.)">-->
+<router-outlet></router-outlet>

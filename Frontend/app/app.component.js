@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var query_result_service_1 = require("./query-result.service");
-var search_service_1 = require("./search.service");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var query_result_service_1 = require('./query-result.service');
+var search_service_1 = require('./search.service');
 var AppComponent = (function () {
     function AppComponent(router, queryResultService, searchService) {
         this.router = router;
@@ -31,17 +31,15 @@ var AppComponent = (function () {
         var link = ['/previousquery', queryResult.id];
         this.router.navigate(link);
     };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'my-app',
+            /**  pipes: [SearchPipe], */
+            templateUrl: 'app/app.component.html'
+        }), 
+        __metadata('design:paramtypes', [router_1.Router, query_result_service_1.QueryResultService, search_service_1.SearchService])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        /**  pipes: [SearchPipe], */
-        templateUrl: 'app/app.component.html'
-    }),
-    __metadata("design:paramtypes", [router_1.Router,
-        query_result_service_1.QueryResultService,
-        search_service_1.SearchService])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

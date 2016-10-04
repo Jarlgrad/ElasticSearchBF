@@ -1,7 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Router }            from '@angular/router';
 
 import { QueryResult } from './query-result';
 import { QueryResultService } from './query-result.service';
@@ -14,50 +13,46 @@ selector:'my-result-overview',
   providers:[SearchService]
 })
 
-export class ResultOverviewComponent implements OnInit{
- ngOnInit(): void {
-   this.searchQueryResults = this.searchInput
-      .debounceTime(100)        // wait for 300ms pause in events
-      .distinctUntilChanged()   // ignore if next search term is same as previous
-      .switchMap(term => term   // switch to new observable each time
-      ? this.searchService.search(term) // return the http search observable
-      : Observable.of<QueryResult[]>([])) // or the observable of empty heroes if no search term
-      .catch(error => {
-        console.log(error);
-        return Observable.of<QueryResult[]>([]);
-      });
-   }
+export class ResultOverviewComponent{
+/**  ngOnInit(): void {
+    this.getQueryResults();
+    console.log(this.queryResults);
+   }*/
 
-   private searchInput = new Subject<string>();
-   searchQueryResults: Observable<QueryResult[]>;
-   mode = 'observable';
-   selectedResult:QueryResult;
-   private  hits = new Array<QueryResult>();
-   private  allData:Object;
   constructor(
     private queryResultService:QueryResultService,
-    private searchService:SearchService,
-    private router: Router){}
+    private searchService:SearchService){}
 
+  errorMessage: string;
+  testResultat:string;
+  queryResults:QueryResult[];
+  selectedResult:QueryResult;
+  mode = 'observable';
 
   onSelect(queryResult:QueryResult):void{
-    this.selectedResult = queryResult;
-  }
-  setResult(data:Object, arrayOfQueryResult:Array<QueryResult>): void {
-    this.allData = data;
-    arrayOfQueryResult.forEach((item, index) => {
-      this.hits[index] = item;
-      JSON.stringify(this.hits[index]._source);
-
-    });
+  this.selectedResult = queryResult;
+}
+  save():void{
+  //Här vill vi spara undan sökningen i minnet.
   }
 
-  search(input:string): void{
-   this.searchService.search(input)
-   .subscribe(
-   data => this.setResult(data,data.hits.hits),
-   error => alert(error));
-    }
+  /**getQueryResults():void{
+  this.searchService.getQueryResults()
+        .subscribe(
+        queryResults => this.queryResults = queryResults,
+        error => this.errorMessage = <any>error);
+  }*/
 
+  getQueryResults(){
+  this.searchService.getQueryResults()
+        .subscribe(
+        data => this.testResultat = JSON.stringify(data),
+        error => alert(error),
+        () => console.log("Nu har jag kört getQueryResults"));
+  }
 
+  /** getQueryResults():void{
+  this.queryResultService.getQueryResults()
+  .map(queryResults => this.queryResults = queryResults);
+} */
 }
