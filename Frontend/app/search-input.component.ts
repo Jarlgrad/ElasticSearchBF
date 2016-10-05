@@ -20,6 +20,7 @@ export class SearchInputComponent implements OnInit {
   searchTerm :string ;
   resultOverview:ResultOverviewComponent;
   private  hits = new Array<QueryResult>();
+  // private types = new Array<String>();
   private  allData:Object;
   selectedResult:QueryResult;
 constructor(
@@ -37,7 +38,23 @@ ngOnInit():void{
       console.log(error);
       return Observable.of<QueryResult[]>([]);
     });
+
+    // this.getTypes(this.types)
   }
+
+//     this.getTypes(this.types)
+// getTypes(types:Array<String>):void {
+
+//   this.searchService.getQueryTypes()
+//   .subscribe(
+//     data => this.setTypeResult(data),
+//     error => alert(error + "nåt gick fel!")
+//   );
+//   console.log(types);
+//   types.forEach((item, index) => {
+//   this.types[index] = item;
+//   }, this)
+// }
 
   onTyping(term:string):void{
     if (term.length>0) {
@@ -53,6 +70,7 @@ ngOnInit():void{
  data => this.setResult(data,data.hits.hits),
  error => alert(error));
   }
+
   onSelect(queryResult:QueryResult):void{
   this.selectedResult = queryResult;
 }
@@ -60,15 +78,25 @@ setResult(data:Object, array:Array<QueryResult>): void {
   this.allData = data;
   array.forEach((item, index) => {
     this.hits[index] = item;
-    JSON.stringify(this.hits[index]._source);
+    // JSON.stringify(this.hits[index]._source);
 
   });
 }
-
+// setTypeResult(array:Array<String>): void {
+//     console.log(array);
+//     array.forEach((item, index) => {
+//     this.types[index] = item;
+//     console.log(this.types);
+//     // JSON.stringify(this.hits[index]._source);
+//   });
+// } 
 // private selectedOptions: number[];
 //     private myOptions: IMultiSelectOption[] = [
 //         { id: 1, name: 'Gröt' },
 //         { id: 2, name: 'Bajs' },
 //         { id: 3, name: 'Rövkaka' }
 //     ];
+
+private type: 
+
 }

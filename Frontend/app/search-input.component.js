@@ -32,7 +32,20 @@ var SearchInputComponent = (function () {
             console.log(error);
             return Observable_1.Observable.of([]);
         });
+        // this.getTypes(this.types)
     };
+    //     this.getTypes(this.types)
+    // getTypes(types:Array<String>):void {
+    //   this.searchService.getQueryTypes()
+    //   .subscribe(
+    //     data => this.setTypeResult(data),
+    //     error => alert(error + "nåt gick fel!")
+    //   );
+    //   console.log(types);
+    //   types.forEach((item, index) => {
+    //   this.types[index] = item;
+    //   }, this)
+    // }
     SearchInputComponent.prototype.onTyping = function (term) {
         if (term.length > 0) {
             this.searchInput.next(term);
@@ -53,7 +66,7 @@ var SearchInputComponent = (function () {
         this.allData = data;
         array.forEach(function (item, index) {
             _this.hits[index] = item;
-            JSON.stringify(_this.hits[index]._source);
+            // JSON.stringify(this.hits[index]._source);
         });
     };
     SearchInputComponent = __decorate([

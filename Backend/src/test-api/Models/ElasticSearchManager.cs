@@ -36,6 +36,11 @@ namespace test_api.Models
         //Används ej längre. 2 inparametrar, bra att behålla för ev. test.
         internal string Search(string query, string field)
         {
+
+            if (query.Length < 1)
+            {
+                
+            }
             Field searchField = new Field(field);
 
             var result =
@@ -106,5 +111,19 @@ namespace test_api.Models
             return response;
         }
         #endregion
+
+        /// <summary>
+        /// Fetches The index multidb and its Value - giving access to Mappings(types). Then adds the types to a list of strings, serializes and returns the list to Http.
+        /// </summary>
+        /// <returns>List<string> with Types</returns>
+        public string GetAllTypes()
+        {
+            var allMappings = client.GetIndex("multidb").Indices.First().Value.Mappings.ToList();
+            List<string> typeList = allMappings.Select(x => x.Key.Name).ToList();    
+
+            //Serializes result to jsonstring
+            var response = client.Serializer.SerializeToString(typeList);
+            return response;       
+        }
     }
 }

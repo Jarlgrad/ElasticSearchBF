@@ -15,7 +15,6 @@ var SearchService = (function () {
         this.http = http;
         this.queryResultsUrl = 'http://localhost:5444/api/home';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.searchResultUrl = 'http://localhost:5444/api/home?input=tuim';
     }
     /**search(query: string): Observable<QueryResult[]> {
       let searchResultUrltest = 'http://localhost:5444/api/home/?query=ei';
@@ -28,16 +27,10 @@ var SearchService = (function () {
             .get(this.queryResultsUrl + ("?input=" + query))
             .map(function (res) { return res.json(); });
     };
-    /**  getQueryResults():Observable<QueryResult[]>{
-        console.log(this.searchResultUrl);
-        return this.http.get(this.searchResultUrl)
-        .map(this.extractData);
-      }*/
-    SearchService.prototype.getQueryResults = function () {
-        console.log("jag är i querydata");
-        return this.http.get(this.searchResultUrl)
+    SearchService.prototype.getQueryTypes = function () {
+        return this.http
+            .get(this.queryResultsUrl + "/1")
             .map(function (res) { return res.json(); });
-        /**catch(this.handleError)*/
     };
     SearchService.prototype.extractData = function (res) {
         console.log("jag är i extractData");

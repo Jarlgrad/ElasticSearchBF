@@ -17,19 +17,19 @@ namespace test_api.Controllers
 
         ElasticSearchManager _elasticSearchManager = new ElasticSearchManager();
 
-        // GET api/values
+        //GET api/values
         [HttpGet]
         public string Get(string input, string field = "_all", string type = "")
         {
             //return _elasticSearchManager.GetAllIndices();
-            return _elasticSearchManager.Search(input, field, type);
+                return _elasticSearchManager.Search(input, field, type);       
         }
 
         // GET api/values/5 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string Get()
         {
-            return "value";
+            return _elasticSearchManager.GetAllTypes();
         }
 
         // POST api/values

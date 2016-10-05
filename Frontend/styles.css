@@ -167,3 +167,8 @@ thead {
   width: 75%;
   margin: auto;
 }
+
+.dropdown li{
+    text-transform: capitalize;
+    padding: 2px;
+}

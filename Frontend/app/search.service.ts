@@ -8,7 +8,6 @@ export class SearchService {
 
   private queryResultsUrl = 'http://localhost:5444/api/home';
   private headers = new Headers({'Content-Type':'application/json'});
-  private searchResultUrl = 'http://localhost:5444/api/home?input=tuim';
   constructor (private http: Http) {}
   searchResults:Array<string>;
   /**search(query: string): Observable<QueryResult[]> {
@@ -24,19 +23,12 @@ export class SearchService {
                .map((res) => res.json());
   }
 
-/**  getQueryResults():Observable<QueryResult[]>{
-    console.log(this.searchResultUrl);
-    return this.http.get(this.searchResultUrl)
-    .map(this.extractData);
-  }*/
-
-  getQueryResults(){
-      console.log("jag är i querydata");
-    return this.http.get(this.searchResultUrl)
-    .map(res => res.json());
-    /**catch(this.handleError)*/
+  getQueryTypes() {
+        return this.http
+               .get(this.queryResultsUrl + `/1`)
+               .map((res) => res.json());
   }
-
+  
   private extractData(res: Response) {
     console.log("jag är i extractData");
     let body = res.json();

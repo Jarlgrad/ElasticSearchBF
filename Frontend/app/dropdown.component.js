@@ -9,16 +9,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var search_service_1 = require('./search.service');
 var DropdownComponent = (function () {
-    function DropdownComponent() {
+    function DropdownComponent(searchService) {
+        this.searchService = searchService;
+        this.types = new Array();
     }
+    DropdownComponent.prototype.ngOnInit = function () {
+        this.getTypes(this.types);
+    };
+    DropdownComponent.prototype.getTypes = function (types) {
+        var _this = this;
+        this.searchService.getQueryTypes()
+            .subscribe(function (data) { return _this.setTypeResult(data); }, function (error) { return alert(error + "nåt gick fel!"); });
+        types.forEach(function (item, index) {
+            _this.types[index] = item;
+        }, this);
+    };
+    DropdownComponent.prototype.setTypeResult = function (array) {
+        var _this = this;
+        array.forEach(function (item, index) {
+            _this.types[index] = item;
+            // JSON.stringify(this.hits[index]._source);
+        });
+        console.log(this.types);
+    };
     DropdownComponent = __decorate([
         core_1.Component({
             selector: 'my-dropdown',
             /**  pipes: [SearchPipe], */
-            template: "<div class=\"dropdown\">\n    <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Dropdown Example\n    <span class=\"caret\"></span></button>\n    <ul class=\"dropdown-menu\">\n      <li><a href=\"#\">HTML</a></li>\n      <li><a href=\"#\">CSS</a></li>\n      <li><a href=\"#\">JavaScript</a></li>\n    </ul>\n  </div>\n"
+            templateUrl: 'app/dropdown.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [search_service_1.SearchService])
     ], DropdownComponent);
     return DropdownComponent;
 }());

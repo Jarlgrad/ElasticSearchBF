@@ -1,18 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'my-dropdown',
   /**  pipes: [SearchPipe], */
-  template: `<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-    </ul>
-  </div>
-`
+  templateUrl:'app/dropdown.component.html'
+  
 })
 
-export class DropdownComponent { }
+export class DropdownComponent implements OnInit{
+
+  private types = new Array<String>();
+
+  constructor(private searchService:SearchService){}
+
+ngOnInit():void{
+  this.getTypes(this.types)
+}
+
+
+  
+
+getTypes(types:Array<String>):void {
+
+  this.searchService.getQueryTypes()
+  .subscribe(
+    data => this.setTypeResult(data),
+    error => alert(error + "nåt gick fel!")
+  );
+  types.forEach((item, index) => {
+  this.types[index] = item;
+  }, this)
+}
+ 
+setTypeResult(array:Array<String>): void {
+     array.forEach((item, index) => {
+     this.types[index] = item;
+      // JSON.stringify(this.hits[index]._source);
+   });
+   console.log(this.types);
+  } 
+}
