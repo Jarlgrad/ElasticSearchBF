@@ -1,9 +1,7 @@
 /* Master Styles */
 @import 'https://fonts.googleapis.com/css?family=Roboto';
-@import 'https://fonts.googleapis.com/css?family=Alfa+Slab+One';
 
 h1 {
-    font-family: 'Alfa Slab One';
     font-weight: normal;
     background-color: #93c2d8;
     padding: 10px 40px 10px 40px;
@@ -11,6 +9,8 @@ h1 {
     border-bottom-left-radius: 40px;*/
     border-radius: 40px;
     text-align: center;
+    text-transform: lowercase;
+    font-size: -webkit-xxx-large;
 }
 
 h2{
@@ -23,19 +23,11 @@ a {
     color: black;
 }
 
-button {
-    font-family: 'Roboto', sans-serif;
-}
-
-input {
-    font-family: 'Roboto', sans-serif;
-}
-
 body {
     padding: 2%;
     margin: auto;
     font-family: 'Roboto';
-    background-color: rgba(249, 250, 255, 0.53);
+    background-color: #fdfff8;
     width: 80%;
 }
 
@@ -49,9 +41,11 @@ padding: 5px;
 text-transform: capitalize;
 }
 
-table {
-    width:1000px;
+.table {
+    width:65%;
+    max-width: 100%;
     line-height: 1.5;
+    border-radius: 10px;
 }
 
 th{
@@ -87,6 +81,7 @@ td{
     border-color: #383838;
     border-radius: 40px;
     padding: 20px;
+    background-color: ghostwhite;
 }
 
 .queryResult {
@@ -144,16 +139,13 @@ thead {
     text-align: left;
 }
 
-
-
-/*th, td {
-    border: 1px solid black;
-}*/
+.my-dropdown{
+    float:right;
+}
 
 #search-button {
-    font-family: 'Roboto';
     font-size: 1.2em;
-    width: 20%;
+    width: 10%;
     border-style: groove;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -162,7 +154,7 @@ thead {
 
 #search-box {
     font-size: 1.2em;
-    width: 80%;
+    width: 40%;
     /*border-radius:10px;*/
     border-style: groove;
     border-width: 2px;
@@ -172,7 +164,6 @@ thead {
 }
 
 #searchDiv{
-  width: 33%;
+  width: 75%;
   margin: auto;
-  padding: 20px;
 }
