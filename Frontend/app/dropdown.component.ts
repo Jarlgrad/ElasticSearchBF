@@ -19,14 +19,12 @@ ngOnInit():void{
 }
 
 
-  
-
 getTypes(types:Array<String>):void {
 
   this.searchService.getQueryTypes()
   .subscribe(
     data => this.setTypeResult(data),
-    error => alert(error + "nåt gick fel!")
+    error => alert("nåt gick fel!: " + error)
   );
   types.forEach((item, index) => {
   this.types[index] = item;
