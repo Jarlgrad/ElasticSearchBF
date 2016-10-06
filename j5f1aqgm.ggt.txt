@@ -1,0 +1,21 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   Frontend/app/dropdown.component.html
+#	modified:   Frontend/app/dropdown.component.js
+#	modified:   Frontend/app/dropdown.component.js.map
+#	modified:   Frontend/app/dropdown.component.ts
+#	modified:   Frontend/app/result-overview.component.js
+#	modified:   Frontend/app/result-overview.component.js.map
+#	modified:   Frontend/app/result-overview.component.ts
+#	modified:   Frontend/app/search-input.component.js.map
+#	modified:   Frontend/app/search-input.component.ts
+#	modified:   Frontend/app/search.service.js
+#	modified:   Frontend/app/search.service.js.map
+#	modified:   Frontend/app/search.service.ts
+#
+

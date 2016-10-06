@@ -14,10 +14,6 @@ selector:'my-result-overview',
 })
 
 export class ResultOverviewComponent{
-/**  ngOnInit(): void {
-    this.getQueryResults();
-    console.log(this.queryResults);
-   }*/
 
   constructor(
     private queryResultService:QueryResultService,
@@ -35,24 +31,4 @@ export class ResultOverviewComponent{
   save():void{
   //Här vill vi spara undan sökningen i minnet.
   }
-
-  /**getQueryResults():void{
-  this.searchService.getQueryResults()
-        .subscribe(
-        queryResults => this.queryResults = queryResults,
-        error => this.errorMessage = <any>error);
-  }*/
-
-  getQueryResults(){
-  this.searchService.getQueryResults()
-        .subscribe(
-        data => this.testResultat = JSON.stringify(data),
-        error => alert(error),
-        () => console.log("Nu har jag kört getQueryResults"));
-  }
-
-  /** getQueryResults():void{
-  this.queryResultService.getQueryResults()
-  .map(queryResults => this.queryResults = queryResults);
-} */
 }

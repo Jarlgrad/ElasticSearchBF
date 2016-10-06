@@ -12,13 +12,6 @@ export class QueryResultService{
 
 constructor(private http:Http){}
 
-/**  getQueryResults():Promise<QueryResult[]>{
-    return this.http.get(this.queryResultsUrl)
-    .toPromise()
-    .then(response => response.json().data as QueryResult[])
-    .catch(this.handleError);
-} */
-
 getQueryResults():Observable<QueryResult[]>{
   return this.http.get(this.queryResultsUrl)
   .map(this.extractData)
@@ -44,20 +37,4 @@ private handleError(error:any): Promise<any> {
    .then(()=>input)
    .catch(this.handleError);
  }
-
- /** Hämtar resultat ur en array från baserat på dess Id
-   getQueryResult(id: number): Observable<QueryResult> {
-   return this.getQueryResults()
-     .then(queryResults => queryResults.find(queryResult => queryResult.id === id));
- } */
-
-/** Så här kan det se ut om de ska gå långsamt
-getSlowQueryResults():Promise<QueryResult[]>{
-return new Promise<QueryResult[]>(resolve =>
-setTimeout(resolve, 2000)).
-then(() => this.getQueryResults());
-} */
-
-
-
 }

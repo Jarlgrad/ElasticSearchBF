@@ -27,17 +27,6 @@ var ResultOverviewComponent = (function () {
     ResultOverviewComponent.prototype.save = function () {
         //Här vill vi spara undan sökningen i minnet.
     };
-    /**getQueryResults():void{
-    this.searchService.getQueryResults()
-          .subscribe(
-          queryResults => this.queryResults = queryResults,
-          error => this.errorMessage = <any>error);
-    }*/
-    ResultOverviewComponent.prototype.getQueryResults = function () {
-        var _this = this;
-        this.searchService.getQueryResults()
-            .subscribe(function (data) { return _this.testResultat = JSON.stringify(data); }, function (error) { return alert(error); }, function () { return console.log("Nu har jag kört getQueryResults"); });
-    };
     ResultOverviewComponent = __decorate([
         core_1.Component({
             selector: 'my-result-overview',

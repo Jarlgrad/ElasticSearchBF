@@ -22,6 +22,12 @@ var SearchService = (function () {
                  .get(this.searchResultUrl )
                  .map((r: Response) => r.json() as QueryResult[]);
     }*/
+    // getQueryResults(){
+    //      console.log("jag är i querydata");
+    //   return this.http.get(this.searchResultUrl)
+    //   .map(res => res.json());
+    /**catch(this.handleError)*/
+    // }
     SearchService.prototype.search = function (query) {
         return this.http
             .get(this.queryResultsUrl + ("?input=" + query))

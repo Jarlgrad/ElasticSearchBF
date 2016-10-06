@@ -34,6 +34,9 @@ var DropdownComponent = (function () {
         });
         console.log(this.types);
     };
+    DropdownComponent.prototype.addToQuery = function (input) {
+        console.log(input);
+    };
     DropdownComponent = __decorate([
         core_1.Component({
             selector: 'my-dropdown',

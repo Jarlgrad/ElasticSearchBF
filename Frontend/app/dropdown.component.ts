@@ -40,4 +40,8 @@ setTypeResult(array:Array<String>): void {
    });
    console.log(this.types);
   } 
+
+  addToQuery(input:String): void{
+    console.log(input);
+  }
 }
