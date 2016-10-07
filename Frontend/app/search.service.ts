@@ -7,9 +7,10 @@ import { QueryResult } from './query-result';
 export class SearchService {
 
   private queryResultsUrl = 'http://localhost:5444/api/home';
-  private queryResultUrlType = '_all';
-  private queryResultUrlInput = '_all';
-  
+  private queryResultUrlType :string;
+  private queryResultUrlInput: string;
+  private allUrl = this.queryResultsUrl+'?' + this.queryResultUrlType+'?'+this.queryResultUrlInput;
+
   private headers = new Headers({'Content-Type':'application/json'});
   constructor (private http: Http) {}
   searchResults:Array<string>;
@@ -22,10 +23,10 @@ export class SearchService {
 
   search(query: string) {
     console.log("URL Pre-Query:");
-    console.log(this.queryResultsUrl);
-    this.queryResultUrlInput = `?input=${query}`;
+    console.log(this.allUrl);
+    this.queryResultUrlInput = `input=${query}`;
     return this.http
-               .get(this.queryResultsUrl + this.queryResultUrlInput)
+               .get(this.queryResultsUrl + '?'+this.queryResultUrlInput + '?&'+this.queryResultUrlType)
                .map((res) => res.json());
   }
 
@@ -47,7 +48,7 @@ export class SearchService {
   }
   
 addTypeToQuery(type:String) {
-  this.queryResultUrlType = `?type=${type}`;
+  this.queryResultUrlType = `type=${type}`;
   console.log(this.queryResultsUrl);
 }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from './search.service';
 
+import { SearchInputComponent } from './search-input.component';
+
 @Component({
   selector: 'my-dropdown',
   /**  pipes: [SearchPipe], */

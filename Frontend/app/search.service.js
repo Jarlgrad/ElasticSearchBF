@@ -14,8 +14,7 @@ var SearchService = (function () {
     function SearchService(http) {
         this.http = http;
         this.queryResultsUrl = 'http://localhost:5444/api/home';
-        this.queryResultUrlType = '_all';
-        this.queryResultUrlInput = '_all';
+        this.allUrl = this.queryResultsUrl + '?' + this.queryResultUrlType + '?' + this.queryResultUrlInput;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     /**search(query: string): Observable<QueryResult[]> {
@@ -26,10 +25,10 @@ var SearchService = (function () {
     }*/
     SearchService.prototype.search = function (query) {
         console.log("URL Pre-Query:");
-        console.log(this.queryResultsUrl);
-        this.queryResultUrlInput = "?input=" + query;
+        console.log(this.allUrl);
+        this.queryResultUrlInput = "input=" + query;
         return this.http
-            .get(this.queryResultsUrl + this.queryResultUrlInput)
+            .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
             .map(function (res) { return res.json(); });
     };
     // search(query: string) {
@@ -46,7 +45,7 @@ var SearchService = (function () {
             .map(function (res) { return res.json(); });
     };
     SearchService.prototype.addTypeToQuery = function (type) {
-        this.queryResultUrlType = "?type=" + type;
+        this.queryResultUrlType = "type=" + type;
         console.log(this.queryResultsUrl);
     };
     SearchService.prototype.extractData = function (res) {
