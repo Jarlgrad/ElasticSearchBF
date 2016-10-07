@@ -24,16 +24,12 @@ var SearchService = (function () {
                  .map((r: Response) => r.json() as QueryResult[]);
     }*/
     SearchService.prototype.search = function (query) {
-        console.log("URL Pre-Query:");
-        console.log(this.allUrl);
         this.queryResultUrlInput = "input=" + query;
         return this.http
             .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
             .map(function (res) { return res.json(); });
     };
     SearchService.prototype.updateSearchWithType = function (query, type) {
-        console.log("URL Pre-Query:");
-        console.log(this.allUrl);
         this.queryResultUrlInput = "input=" + query;
         this.queryResultUrlType = "type=" + type;
         return this.http

@@ -22,8 +22,6 @@ export class SearchService {
   }*/
 
   search(query: string) {
-    console.log("URL Pre-Query:");
-    console.log(this.allUrl);
     this.queryResultUrlInput = `input=${query}`;
     return this.http
       .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
@@ -31,8 +29,6 @@ export class SearchService {
   }
 
   updateSearchWithType(query: string, type: string) {
-    console.log("URL Pre-Query:");
-    console.log(this.allUrl);
     this.queryResultUrlInput = `input=${query}`;
     this.queryResultUrlType = `type=${type}`;
     return this.http

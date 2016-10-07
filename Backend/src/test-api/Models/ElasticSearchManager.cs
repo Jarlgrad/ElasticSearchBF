@@ -60,14 +60,14 @@ namespace test_api.Models
             return response;
         }
 
-        internal string Search(string query, string field, string type)
+        internal string Search(string query, string type, string field)
         {
             Field searchField = new Field(field);
             ISearchResponse<dynamic> result;
             if (type == "")
             {
                 result = client.Search<dynamic>(r => r
-                .Size(20)
+                .Size(10)
                 .AllTypes()
                 .Query(q => q
                 .QueryString(qs => qs
