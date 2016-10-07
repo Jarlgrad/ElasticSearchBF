@@ -4,8 +4,15 @@
     <input [(ngModel)]="searchTerm" #searchBox id="search-box" (keyup)="onTyping(searchBox.value)" placeholder="Vad vill du hitta?">
     <button id="search-button" (click)="search(searchBox.value)">Sök</button>
 
-    <my-dropdown class="my-dropdown"></my-dropdown>
-    <my-dropdown class="my-dropdown"></my-dropdown>
+    <div class="dropdown checkbox">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Type
+    <span class="caret"></span>    </button>
+      <ul class="dropdown-menu">
+        <div *ngFor="let type of types" (click)="addTypeToQuery(searchBox.value, type)">
+          <li>{{type}}</li>
+        </div>
+      </ul>
+    </div>
 
 
   </div>

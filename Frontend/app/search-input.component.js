@@ -17,11 +17,13 @@ var SearchInputComponent = (function () {
     function SearchInputComponent(searchService, router) {
         this.searchService = searchService;
         this.router = router;
+        this.types = new Array();
         this.searchInput = new Subject_1.Subject();
         this.hits = new Array();
     }
     SearchInputComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.getTypes(this.types);
         this.searchQueryResults = this.searchInput
             .debounceTime(100) // wait for 300ms pause in events
             .distinctUntilChanged() // ignore if next search term is same as previous
@@ -32,6 +34,31 @@ var SearchInputComponent = (function () {
             console.log(error);
             return Observable_1.Observable.of([]);
         });
+    };
+    SearchInputComponent.prototype.getTypes = function (types) {
+        var _this = this;
+        this.searchService.getQueryTypes()
+            .subscribe(function (data) { return _this.setTypeResult(data); }, function (error) { return alert("nåt gick fel!: " + error); });
+        types.forEach(function (item, index) {
+            _this.types[index] = item;
+        }, this);
+    };
+    SearchInputComponent.prototype.setTypeResult = function (array) {
+        var _this = this;
+        array.forEach(function (item, index) {
+            _this.types[index] = item;
+            // JSON.stringify(this.hits[index]._source);
+        });
+        console.log(this.types);
+    };
+    SearchInputComponent.prototype.addTypeToQuery = function (query, type) {
+        this.hits;
+        if (query.length === 0) {
+            this.searchService.addTypeToQuery(type);
+        }
+        else
+            this.updateSearchWithType(query, type);
+        console.log(type);
     };
     SearchInputComponent.prototype.onTyping = function (term) {
         if (term.length > 0) {
@@ -45,9 +72,9 @@ var SearchInputComponent = (function () {
         this.searchService.search(input)
             .subscribe(function (data) { return _this.setResult(data, data.hits.hits); }, function (error) { return alert(error); });
     };
-    SearchInputComponent.prototype.updateSearchWithType = function (type) {
+    SearchInputComponent.prototype.updateSearchWithType = function (query, type) {
         var _this = this;
-        this.searchService.updateSearchWithType(this.searchTerm, type)
+        this.searchService.updateSearchWithType(query, type)
             .subscribe(function (data) { return _this.setResult(data, data.hits.hits); }, function (error) { return alert(error); });
     };
     SearchInputComponent.prototype.onSelect = function (queryResult) {

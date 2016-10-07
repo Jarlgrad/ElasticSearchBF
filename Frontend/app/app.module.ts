@@ -14,7 +14,6 @@ import { ResultOverviewComponent } from './result-overview.component';
 import { PreviousQueryComponent } from './previous-query.component';
 import { SearchService } from './search.service';
 import { SearchInputComponent } from './search-input.component';
-import { DropdownComponent} from './dropdown.component';
 
 @NgModule({
   imports:      [ BrowserModule,
@@ -28,11 +27,9 @@ import { DropdownComponent} from './dropdown.component';
                   KibanaComponent,
                   ResultOverviewComponent,
                   SearchInputComponent,
-                  PreviousQueryComponent,
-                  DropdownComponent ],
+                  PreviousQueryComponent ],
   bootstrap:    [ AppComponent,
-                  SearchInputComponent,
-                  DropdownComponent ],
+                  SearchInputComponent],
   providers:    [ QueryResultService,
                   SearchService]
 

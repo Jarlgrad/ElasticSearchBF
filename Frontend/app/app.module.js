@@ -22,7 +22,6 @@ var result_overview_component_1 = require('./result-overview.component');
 var previous_query_component_1 = require('./previous-query.component');
 var search_service_1 = require('./search.service');
 var search_input_component_1 = require('./search-input.component');
-var dropdown_component_1 = require('./dropdown.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,11 +38,9 @@ var AppModule = (function () {
                 kibana_component_1.KibanaComponent,
                 result_overview_component_1.ResultOverviewComponent,
                 search_input_component_1.SearchInputComponent,
-                previous_query_component_1.PreviousQueryComponent,
-                dropdown_component_1.DropdownComponent],
+                previous_query_component_1.PreviousQueryComponent],
             bootstrap: [app_component_1.AppComponent,
-                search_input_component_1.SearchInputComponent,
-                dropdown_component_1.DropdownComponent],
+                search_input_component_1.SearchInputComponent],
             providers: [query_result_service_1.QueryResultService,
                 search_service_1.SearchService]
         }), 

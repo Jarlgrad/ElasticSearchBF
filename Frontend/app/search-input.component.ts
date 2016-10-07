@@ -15,6 +15,8 @@ import {ResultOverviewComponent} from './result-overview.component'
 })
 export class SearchInputComponent implements OnInit {
 
+
+  private types = new Array<String>();
   private searchInput = new Subject<string>();
   searchQueryResults: Observable<QueryResult[]>;
   searchTerm: string;
@@ -23,13 +25,14 @@ export class SearchInputComponent implements OnInit {
   // private types = new Array<String>();
   private allData: Object;
   selectedResult: QueryResult;
-  
-  
+
+
   constructor(
     private searchService: SearchService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.getTypes(this.types);
     this.searchQueryResults = this.searchInput
       .debounceTime(100)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
@@ -40,6 +43,39 @@ export class SearchInputComponent implements OnInit {
         console.log(error);
         return Observable.of<QueryResult[]>([]);
       });
+  }
+
+  getTypes(types: Array<String>): void {
+
+    this.searchService.getQueryTypes()
+      .subscribe(
+      data => this.setTypeResult(data),
+      error => alert("nåt gick fel!: " + error)
+      );
+    types.forEach((item, index) => {
+      this.types[index] = item;
+    }, this)
+  }
+
+  setTypeResult(array: Array<String>): void {
+    array.forEach((item, index) => {
+      this.types[index] = item;
+      // JSON.stringify(this.hits[index]._source);
+    });
+    console.log(this.types);
+  }
+
+  addTypeToQuery(query: string, type: string): void {
+    this.hits
+
+    if (query.length === 0) {
+      this.searchService.addTypeToQuery(type);
+    }
+    else
+      this.updateSearchWithType(query, type);
+
+    console.log(type);
+
   }
 
   onTyping(term: string): void {
@@ -57,8 +93,8 @@ export class SearchInputComponent implements OnInit {
       error => alert(error));
   }
 
-  updateSearchWithType(type: string): void {
-    this.searchService.updateSearchWithType(this.searchTerm, type)
+  updateSearchWithType(query: string, type: string): void {
+    this.searchService.updateSearchWithType(query, type)
       .subscribe(
       data => this.setResult(data, data.hits.hits),
       error => alert(error));

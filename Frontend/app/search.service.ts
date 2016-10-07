@@ -34,6 +34,7 @@ export class SearchService {
     console.log("URL Pre-Query:");
     console.log(this.allUrl);
     this.queryResultUrlInput = `input=${query}`;
+    this.queryResultUrlType = `type=${type}`;
     return this.http
       .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
       .map((res) => res.json());
