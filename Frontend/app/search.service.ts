@@ -7,13 +7,13 @@ import { QueryResult } from './query-result';
 export class SearchService {
 
   private queryResultsUrl = 'http://localhost:5444/api/home';
-  private queryResultUrlType :string;
+  private queryResultUrlType: string;
   private queryResultUrlInput: string;
-  private allUrl = this.queryResultsUrl+'?' + this.queryResultUrlType+'?'+this.queryResultUrlInput;
+  private allUrl = this.queryResultsUrl + '?' + this.queryResultUrlType + '?' + this.queryResultUrlInput;
 
-  private headers = new Headers({'Content-Type':'application/json'});
-  constructor (private http: Http) {}
-  searchResults:Array<string>;
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+  constructor(private http: Http) { }
+  searchResults: Array<string>;
   /**search(query: string): Observable<QueryResult[]> {
     let searchResultUrltest = 'http://localhost:5444/api/home/?query=ei';
     return this.http
@@ -26,10 +26,18 @@ export class SearchService {
     console.log(this.allUrl);
     this.queryResultUrlInput = `input=${query}`;
     return this.http
-               .get(this.queryResultsUrl + '?'+this.queryResultUrlInput + '?&'+this.queryResultUrlType)
-               .map((res) => res.json());
+      .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
+      .map((res) => res.json());
   }
 
+  updateSearchWithType(query: string, type: string) {
+    console.log("URL Pre-Query:");
+    console.log(this.allUrl);
+    this.queryResultUrlInput = `input=${query}`;
+    return this.http
+      .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
+      .map((res) => res.json());
+  }
 
   // search(query: string) {
   //   console.log("URL Pre-Query:");
@@ -43,14 +51,14 @@ export class SearchService {
 
   getQueryTypes() {
     return this.http
-            .get(this.queryResultsUrl + `/1`)
-            .map((res) => res.json());
+      .get(this.queryResultsUrl + `/1`)
+      .map((res) => res.json());
   }
-  
-addTypeToQuery(type:String) {
-  this.queryResultUrlType = `type=${type}`;
-  console.log(this.queryResultsUrl);
-}
+
+  addTypeToQuery(type: String) {
+    this.queryResultUrlType = `type=${type}`;
+    console.log(this.queryResultsUrl);
+  }
 
   private extractData(res: Response) {
     console.log("jag är i extractData");

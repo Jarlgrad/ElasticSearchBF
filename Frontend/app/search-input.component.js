@@ -45,6 +45,11 @@ var SearchInputComponent = (function () {
         this.searchService.search(input)
             .subscribe(function (data) { return _this.setResult(data, data.hits.hits); }, function (error) { return alert(error); });
     };
+    SearchInputComponent.prototype.updateSearchWithType = function (type) {
+        var _this = this;
+        this.searchService.updateSearchWithType(this.searchTerm, type)
+            .subscribe(function (data) { return _this.setResult(data, data.hits.hits); }, function (error) { return alert(error); });
+    };
     SearchInputComponent.prototype.onSelect = function (queryResult) {
         this.selectedResult = queryResult;
     };

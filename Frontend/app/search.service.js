@@ -31,6 +31,14 @@ var SearchService = (function () {
             .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
             .map(function (res) { return res.json(); });
     };
+    SearchService.prototype.updateSearchWithType = function (query, type) {
+        console.log("URL Pre-Query:");
+        console.log(this.allUrl);
+        this.queryResultUrlInput = "input=" + query;
+        return this.http
+            .get(this.queryResultsUrl + '?' + this.queryResultUrlInput + '?&' + this.queryResultUrlType)
+            .map(function (res) { return res.json(); });
+    };
     // search(query: string) {
     //   console.log("URL Pre-Query:");
     //   console.log(this.queryResultsUrl);

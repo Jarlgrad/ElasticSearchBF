@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var search_service_1 = require('./search.service');
+var search_input_component_1 = require('./search-input.component');
 var DropdownComponent = (function () {
-    function DropdownComponent(searchService) {
+    function DropdownComponent(searchService, searchInputComponent) {
         this.searchService = searchService;
+        this.searchInputComponent = searchInputComponent;
         this.types = new Array();
     }
     DropdownComponent.prototype.ngOnInit = function () {
@@ -34,17 +36,23 @@ var DropdownComponent = (function () {
         });
         console.log(this.types);
     };
-    DropdownComponent.prototype.addTypeToQuery = function (input) {
-        this.searchService.addTypeToQuery(input);
-        console.log(input);
+    DropdownComponent.prototype.addTypeToQuery = function (type) {
+        this.searchInputComponent.hits;
+        if (this.searchInputComponent.hits.length === 0) {
+            this.searchService.addTypeToQuery(type);
+        }
+        else
+            this.searchInputComponent.updateSearchWithType(type);
+        console.log(type);
     };
     DropdownComponent = __decorate([
         core_1.Component({
             selector: 'my-dropdown',
             /**  pipes: [SearchPipe], */
-            templateUrl: 'app/dropdown.component.html'
+            templateUrl: 'app/dropdown.component.html',
+            providers: [search_input_component_1.SearchInputComponent]
         }), 
-        __metadata('design:paramtypes', [search_service_1.SearchService])
+        __metadata('design:paramtypes', [search_service_1.SearchService, search_input_component_1.SearchInputComponent])
     ], DropdownComponent);
     return DropdownComponent;
 }());

@@ -82,7 +82,7 @@ namespace test_api.Models
             {
                 Types types = Types.Parse(type);
                 result = client.Search<dynamic>(r => r
-                .Size(1)
+                .Size(10)
                 .Type(types)
                 .Query(q => q
                 .QueryString(qs => qs
