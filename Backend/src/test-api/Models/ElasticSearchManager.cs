@@ -67,7 +67,7 @@ namespace test_api.Models
             if (type == "")
             {
                 result = client.Search<dynamic>(r => r
-                .Size(1)
+                .Size(20)
                 .AllTypes()
                 .Query(q => q
                 .QueryString(qs => qs

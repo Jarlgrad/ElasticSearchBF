@@ -21,7 +21,7 @@ var DropdownComponent = (function () {
     DropdownComponent.prototype.getTypes = function (types) {
         var _this = this;
         this.searchService.getQueryTypes()
-            .subscribe(function (data) { return _this.setTypeResult(data); }, function (error) { return alert(error + "nåt gick fel!"); });
+            .subscribe(function (data) { return _this.setTypeResult(data); }, function (error) { return alert("nåt gick fel!: " + error); });
         types.forEach(function (item, index) {
             _this.types[index] = item;
         }, this);
@@ -34,7 +34,8 @@ var DropdownComponent = (function () {
         });
         console.log(this.types);
     };
-    DropdownComponent.prototype.addToQuery = function (input) {
+    DropdownComponent.prototype.addTypeToQuery = function (input) {
+        this.searchService.addTypeToQuery(input);
         console.log(input);
     };
     DropdownComponent = __decorate([

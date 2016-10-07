@@ -1,7 +1,7 @@
 <div class="dropdown checkbox">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Type
     <span class="caret"></span>    </button>
     <ul class="dropdown-menu" >
-      <div *ngFor="let type of types" (click)="addToQuery(type)" ><li><input type ="checkbox" checked="checked">{{type}}</input></li> </div>
+      <div *ngFor="let type of types" (click)="addTypeToQuery(type)"><li>{{type}}</li> </div>
     </ul>
 </div>

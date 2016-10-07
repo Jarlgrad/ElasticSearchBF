@@ -12,10 +12,6 @@ var core_1 = require('@angular/core');
 var query_result_service_1 = require('./query-result.service');
 var search_service_1 = require('./search.service');
 var ResultOverviewComponent = (function () {
-    /**  ngOnInit(): void {
-        this.getQueryResults();
-        console.log(this.queryResults);
-       }*/
     function ResultOverviewComponent(queryResultService, searchService) {
         this.queryResultService = queryResultService;
         this.searchService = searchService;

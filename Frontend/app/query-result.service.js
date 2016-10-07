@@ -17,12 +17,6 @@ var QueryResultService = (function () {
         this.queryResultsUrl = 'http://localhost:5444/api/home';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    /**  getQueryResults():Promise<QueryResult[]>{
-        return this.http.get(this.queryResultsUrl)
-        .toPromise()
-        .then(response => response.json().data as QueryResult[])
-        .catch(this.handleError);
-    } */
     QueryResultService.prototype.getQueryResults = function () {
         return this.http.get(this.queryResultsUrl)
             .map(this.extractData)

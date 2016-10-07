@@ -39,7 +39,8 @@ setTypeResult(array:Array<String>): void {
    console.log(this.types);
   } 
 
-  addToQuery(input:String): void{
+  addTypeToQuery(input:String): void{
+    this.searchService.addTypeToQuery(input);
     console.log(input);
   }
 }
